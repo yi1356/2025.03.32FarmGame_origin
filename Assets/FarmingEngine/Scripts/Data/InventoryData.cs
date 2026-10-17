@@ -37,7 +37,7 @@ namespace FarmingEngine
     [System.Serializable]
     public class InventoryData
     {
-        public Dictionary<int, InventoryItemData> items;    // 物品字典(Z：对于背包来说，key是格子的索引)
+        public Dictionary<int, InventoryItemData> items;    // 物品字典(Z：对于背包来说，key是格子的索引)【其实际项目中一般用列表比较多，InventoryItemData对象中用一个bool标识是否是默认数据(其实就是没物品信息)，来判断这个格子是否为空】
         public InventoryType type;                          // 库存类型
         public string uid;                                  // 唯一ID
         public int size = 99;                               // 大小

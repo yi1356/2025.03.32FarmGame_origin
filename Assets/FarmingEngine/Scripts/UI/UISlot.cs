@@ -271,7 +271,7 @@ namespace FarmingEngine
                 is_dragging = false;
                 onDragEnd?.Invoke(this);
                 Vector3 anchor_pos = TheUI.Get().ScreenPointToCanvasPos(PlayerControlsMouse.Get().GetMousePosition());
-                UISlot target = UISlot.GetNearestActive(anchor_pos, 50f);
+                UISlot target = UISlot.GetNearestActive(anchor_pos, 50f);//根据鼠标松开时的画布坐标 `anchor_pos`，在**50 像素范围**内，查找所有激活的插槽，返回**离这个坐标最近的那个 UISlot**
                 if (target != null && target != this)
                     onDragTo?.Invoke(this, target);
             }
@@ -331,7 +331,7 @@ namespace FarmingEngine
             float min_dist = range;
             foreach (UISlot slot in slot_list)
             {
-                Vector2 canvas_pos = TheUI.Get().WorldToCanvasPos(slot.transform.position);
+                Vector2 canvas_pos = TheUI.Get().WorldToCanvasPos(slot.transform.position);//把一个物体的世界坐标，转换成 Canvas 画布空间下的坐标
                 float dist = (canvas_pos - anchor_pos).magnitude;
                 if (dist < min_dist && slot.gameObject.activeInHierarchy)
                 {
